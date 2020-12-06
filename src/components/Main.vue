@@ -85,6 +85,9 @@
                   v-model="form.imgUrl"
                   class="other-settings-container__input"
                 />
+              </div>
+              <div class="settings__err-msg">
+                
               </div> 
               <textarea rows="8" class="other-settings-container__text-input" placeholder="Enter a text" v-model="form.text" />
             </div>
@@ -94,9 +97,6 @@
               <button class="buttons-container__btn" v-on:click="exportPNG">Export as PNG</button>
               <button class="buttons-container__btn" v-on:click="exportHTML">Export as HTML</button>
               <button class="buttons-container__btn" v-on:click="exportJSON">Export as JSON</button>
-            </div>
-            <div class="settings__err-msg">
-
             </div>
             <textarea rows="8" class="settings__export-text" readonly></textarea>
           </div>
@@ -412,6 +412,13 @@ input {
 
 .other-settings-container__text-input {
   font-size: 16px;
+  margin-top: 7%;
+}
+
+.settings__err-msg {
+  color: red;
+  margin: -2% 3% -4% 3%;
+  display: none;
 }
 
 .buttons-container {

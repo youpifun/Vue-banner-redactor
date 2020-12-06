@@ -36,13 +36,19 @@ export default {
       this.$refs.stage.getStage().draw();
     },
     fillImage(newUrl) {
+      var errContainer = document.getElementsByClassName('settings__err-msg')[0];
       let vm = this;
       this.testImg = new Image();
       this.testImg.crossOrigin = "Anonymous";
       this.testImg.src = newUrl;
       this.testImg.onload = function () {
         vm.$refs.stage.getStage().draw();
+        errContainer.style.display = 'none';
       };
+      this.testImg.onerror = function () {
+        errContainer.innerHTML = 'Неверный URL, либо загрузка изображения на баннер запрещена автором сайта, на котором оно было размещено (Blocked by CORS policy)';
+        errContainer.style.display = 'block';
+      }
       this.$nextTick(function () {
         this.$refs.img.getNode().setAttr("src", newUrl);
       });
@@ -133,7 +139,12 @@ export default {
   },
   watch: {
     imgUrl(newUrl) {
-      this.fillImage(newUrl);
+      if (newUrl == '') {
+        var errContainer = document.getElementsByClassName('settings__err-msg')[0];
+        errContainer.style.display = 'none';
+      } 
+      else 
+        this.fillImage(newUrl);
     },
     gradient(newGradient) {
       this.$nextTick(function () {
