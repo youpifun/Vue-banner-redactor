@@ -78,13 +78,16 @@
           <div v-show="curPage == 'otherSettingsPage'" class="settings__page">
             <div class="other-settings-container">
               <div class="other-settings-container__input-wrapper">
-                Вставьте URL или Base64: 
-                <input
-                  type="text"
-                  placeholder="URL of image"
-                  v-model="form.imgUrl"
-                  class="other-settings-container__input"
-                />
+                <input type="text" placeholder="Переход на указанную ссылку, при клике" v-model="form.redirectUrl"/>
+                <div class="other-settings-container__url-container">
+                  Вставьте URL или Base64: 
+                  <input
+                    type="text"
+                    placeholder="URL of image"
+                    v-model="form.imgUrl"
+                    class="other-settings-container__input"
+                  />
+                </div>
               </div>
               <div class="settings__err-msg">
                 
@@ -138,6 +141,7 @@ export default {
         height: 500,
         imgUrl: "",
         text: "",
+        redirectUrl: ''
       },
       gradient: {
         type: "linear",
@@ -196,7 +200,14 @@ export default {
       }
       let exportTxtBlock = document.getElementsByClassName('settings__export-text')[0];
       exportTxtBlock.innerHTML = "";
-      exportTxtBlock.innerHTML = shadowBanner.outerHTML;
+      if (this.form.redirectUrl != ''){
+        let createdRefirectLink = document.createElement('a');
+        createdRefirectLink.href = this.form.redirectUrl;
+        createdRefirectLink.appendChild(shadowBanner);
+        createdRefirectLink.style.textDecoration = 'none';
+        exportTxtBlock.innerHTML = createdRefirectLink.outerHTML;
+      } else 
+        exportTxtBlock.innerHTML = shadowBanner.outerHTML;
     },
     createBanner() {
       let createdBanner = document.createElement('div');
@@ -405,6 +416,7 @@ input {
 
 .other-settings-container__input-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin: 5%;
@@ -440,6 +452,12 @@ input {
 
 .import-text__btn {
   margin: 5% auto;
+}
+
+.other-settings-container__url-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 </style>
 

@@ -48,6 +48,8 @@ export default {
       this.testImg.onerror = function () {
         errContainer.innerHTML = 'Неверный URL, либо загрузка изображения на баннер запрещена автором сайта, на котором оно было размещено (Blocked by CORS policy)';
         errContainer.style.display = 'block';
+        vm.testImg = null;
+        vm.tr.setNodes([]);
       }
       this.$nextTick(function () {
         this.$refs.img.getNode().setAttr("src", newUrl);
