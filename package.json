@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve --port 3999",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "konva": "^7.2.0",
+    "vue": "^2.6.11",
+    "vue-color-gradient-picker": "^0.1.2",
+    "vue-konva": "^2.1.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
