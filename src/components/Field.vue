@@ -46,7 +46,7 @@ export default {
         errContainer.style.display = 'none';
       };
       this.testImg.onerror = function () {
-        errContainer.innerHTML = 'Неверный URL, либо загрузка изображения на баннер запрещена автором сайта, на котором оно было размещено (Blocked by CORS policy)';
+        errContainer.innerHTML = 'Invalid URL, or downloading of this image is prohibited by author of site (Blocked by CORS policy)';
         errContainer.style.display = 'block';
         vm.testImg = null;
         vm.tr.setNodes([]);

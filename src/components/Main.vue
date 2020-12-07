@@ -56,11 +56,11 @@
             <div class="background-settings-wrapper">
               <div class="color-selector">
                 <div class="background-settings-info">
-                  Выберите тип градиента:<br />
+                  Choose gradient type:<br />
                   <br />
-                  Выберите цвет:
+                  Choose a color:
                   <div class="background-settings-info__gradient-info">
-                    Нажмите на слайдер, если хотите добавить градиент.
+                    Click on slider bar to add gradient point:
                   </div>
                 </div>
                 <ColorPicker
@@ -79,15 +79,15 @@
             <div class="other-settings-container">
               <div class="other-settings-container__input-wrapper">
                 <div class="other-settings-container__url-container">
-                  Вставьте ссылку для баннера:
+                  Enter a link for banner:
                   <input type="text" 
-                    placeholder="Переход на ссылку, при клике" 
+                    placeholder="Redirect on click" 
                     v-model="form.redirectUrl" 
                     class="other-settings-container__input"
                   />
                 </div>
                 <div class="other-settings-container__url-container">
-                  Вставьте URL или Base64: 
+                  Enter URL or Base64: 
                   <input
                     type="text"
                     placeholder="URL of image"
@@ -112,7 +112,7 @@
           </div>
           <div v-show="curPage == 'importPage'" class="settings__page">
             <div class="import-text">
-              <textarea rows="15" placeholder="Вставьте сюда экспортированный баннер в формате JSON" id="importText"></textarea>
+              <textarea rows="15" placeholder="Enter exported in JSON banner here..." id="importText"></textarea>
               <button class="buttons-container__btn import-text__btn" @click="importFromJson">Import</button>
             </div>
           </div>
@@ -334,7 +334,7 @@ export default {
   );
   color: black;
   margin-right: 5px;
-  font-size: 22px;
+  font-size: 20px;
   color: whitesmoke;
 }
 
@@ -431,14 +431,14 @@ input {
 
 .other-settings-container__text-input {
   font-size: 16px;
-  margin-top: 7%;
+  margin-top: 6.5%;
   max-width: 100%;
   min-width: 100%;
 }
 
 .settings__err-msg {
   color: red;
-  margin: -2% 3% -4% 3%;
+  margin: -3% 3% -2.5% 3%;
   display: none;
 }
 
@@ -486,5 +486,6 @@ input {
 
 .ui-color-picker {
   background: inherit;
+  margin: 0;
 }
 </style>
