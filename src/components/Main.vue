@@ -78,7 +78,14 @@
           <div v-show="curPage == 'otherSettingsPage'" class="settings__page">
             <div class="other-settings-container">
               <div class="other-settings-container__input-wrapper">
-                <input type="text" placeholder="Переход на указанную ссылку, при клике" v-model="form.redirectUrl"/>
+                <div class="other-settings-container__url-container">
+                  Вставьте ссылку для баннера:
+                  <input type="text" 
+                    placeholder="Переход на ссылку, при клике" 
+                    v-model="form.redirectUrl" 
+                    class="other-settings-container__input"
+                  />
+                </div>
                 <div class="other-settings-container__url-container">
                   Вставьте URL или Base64: 
                   <input
@@ -105,7 +112,7 @@
           </div>
           <div v-show="curPage == 'importPage'" class="settings__page">
             <div class="import-text">
-              <textarea rows="15" id="importText"></textarea>
+              <textarea rows="15" placeholder="Вставьте сюда экспортированный баннер в формате JSON" id="importText"></textarea>
               <button class="buttons-container__btn import-text__btn" @click="importFromJson">Import</button>
             </div>
           </div>
@@ -310,7 +317,7 @@ export default {
 
 .navbar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .navbar__button {
@@ -331,16 +338,16 @@ export default {
   color: whitesmoke;
 }
 
+.navbar__button:last-child {
+  margin-right: 0;
+}
+
 .active {
   background: linear-gradient(
     to bottom,
     rgba(208, 12, 96, 1) 0,
     rgba(154, 29, 69, 1) 100%
   );
-}
-
-.gradient-block {
-  margin: 2% 0;
 }
 
 .settings__page {
@@ -425,6 +432,8 @@ input {
 .other-settings-container__text-input {
   font-size: 16px;
   margin-top: 7%;
+  max-width: 100%;
+  min-width: 100%;
 }
 
 .settings__err-msg {
@@ -441,13 +450,16 @@ input {
 
 .settings__export-text {
   margin-top: 6%;
-  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
   height: 60%;
 }
 
 .import-text {
   display: flex;
   flex-direction: column;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 .import-text__btn {
@@ -458,6 +470,10 @@ input {
   display: flex;
   width: 100%;
   align-items: center;
+}
+
+.other-settings-container__url-container:first-child {
+  margin-bottom: 2%;
 }
 </style>
 
