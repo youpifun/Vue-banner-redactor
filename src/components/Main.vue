@@ -81,7 +81,7 @@
                 <div class="other-settings-container__url-container">
                   Enter a link for banner:
                   <input type="text" 
-                    placeholder="Redirect on click" 
+                    placeholder="Redirect here on click" 
                     v-model="form.redirectUrl" 
                     class="other-settings-container__input"
                   />
@@ -96,10 +96,10 @@
                   />
                 </div>
               </div>
-              <div class="settings__err-msg">
-                
-              </div> 
-              <textarea rows="8" class="other-settings-container__text-input" placeholder="Enter a text" v-model="form.text" />
+              <div class="settings__err-msg"> 
+              </div>
+              <textarea rows="8" class="other-settings-container__text-input" placeholder="Place text on banner" v-model="form.text" />
+              <span class="other-settings-container__information">You can also resize/rotate image or text on banner.</span>
             </div>
           </div>
           <div v-show="curPage == 'exportPage'" class="settings__page">
@@ -424,16 +424,19 @@ input {
 .other-settings-container__input-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   margin: 5%;
 }
 
 .other-settings-container__text-input {
   font-size: 16px;
-  margin-top: 6.5%;
-  max-width: 100%;
-  min-width: 100%;
+  margin: 6.5% 5% 0 5%;
+  width: 90%;
+}
+
+.other-settings-container__information {
+    text-align: center;
+    margin-top: 5%;
+    font-weight: 600;
 }
 
 .settings__err-msg {
